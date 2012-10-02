@@ -1,0 +1,71 @@
+Author	: Chirag R. Agarwal
+ID		: chirag.agarwalr@gmail.com
+Site	: http://www.agarwalchirag.wordpress.com
+Problem	: Spiderman to the rescue
+
+I have the following files :
+
+1) spiderMain.c : 
+	It is the main driver file.
+	
+2) HEADER.h :
+	It has the function declarations for :
+		- inputMatrix() : Takes input from the matrix from the file 'input.txt'
+		- spidey() : The main implementation function which calculates the path the Mary Jane.
+		
+3) input.txt :
+	Contains the input in the following format :
+	
+	4
+	0 0 1 1
+	1 0 1 1
+	1 0 0 0
+	1 1 1 2
+	
+	The first line contains the size of the matrix. It is followed by the matrix itself.
+	
+4) inputMatrix.c :
+	Contains the function definition to input the matrix from the input file
+	
+5) spidey.c :
+	Contains the heart of the program. The function to check all the possible paths and thus compute one. 
+	
+6) Makefile
+
+----------------------------------------------------------------------------------------------
+
+HOW TO EXECUTE MY PROGRAM ?
+
+Simply type "make" in the outermost folder
+
+This will compile the process and create and executable named 'spider'
+
+Now type './spider' to execute the program.
+
+The necessary output is displayed on the terminal. 
+
+To clean all the files created by the program type "make clean" on the terminal.
+
+---------------------------------------------------------------------------------------------
+
+STRUCTURE :
+
+I've implemented the program using recursion. Starting from the entry (0,0), we first check if the current position is either a 
+last row/column. If yes : then create only one child process.
+Else : Create 2 child processes and check recursively for each of them. 
+
+If a process encounters 1, it exits with the status 1. Thus if a status of 1 is collected, it indicates there is no further way down that
+particular path.
+
+If a process encounters 1 both from left and right children, it indicates Mary Jane cannot be rescued.
+
+If a process encounters 2, it returns 2 and thus if a final status of 2 is collected, that particular entry is printed and thus
+the path to Mary Jane is printed on the screen in a reverse manner using recursion.
+
+----------------------------------------------------------------------------------
+
+NOTE : 
+
+If you'd like to check the processes created in every step, simply uncomment the statements I've commented. 
+They print the PIDs, PPIDs of each child created. Thus the process tree can be seen clearly.
+
